@@ -1,31 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Albums</h1>
+<div class="heading-section text-center">
+  <h2>Albums</h2>
+  <%= link_to 'New Album', new_album_path %>
+</div>
+<div class="row about">
+  <div class="col-md-10 col-md-offset-1">
+    <% @albums.in_groups_of(2, false).each do |album1, album2| %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Photos</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        <div class="col-md-6 col-sm-6">
+          <a href="<%= album_path(album1) %>">
+            <div class="team-section-grid" style="background-image: url(images/author-6.jpg);">
+              <div class="overlay-section">
+                <div class="desc">
+                  <h2><%= album1.title %></h2>
+                </div>
+              </div>
+            </div>
+          </a>
+          <div class="text-center">
+            <span><%= link_to 'Edit', edit_album_path(album1) %></span>
+            <span><%= link_to 'Destroy', album1, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+          </div>
+        </div>
 
-  <tbody>
-    <% @albums.each do |album| %>
-      <tr>
-        <td><%= album.title %></td>
-        <td><%= album.photos %></td>
-        <td><%= album.user_id %></td>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <div class="col-md-6 col-sm-6">
+          <a href="<%= album_path(album2) %>">
+            <div class="team-section-grid" style="background-image: url(images/author-6.jpg);">
+              <div class="overlay-section">
+                <div class="desc">
+                  <h2><%= album2.title %></h2>
+                </div>
+              </div>
+            </div>
+          </a>
+          <div class="text-center">
+            <span><%= link_to 'Edit', edit_album_path(album1) %></span>
+            <span><%= link_to 'Destroy', album1, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+          </div>
+        </div>
+
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Album', new_album_path %>
+  </div>
+</div>
