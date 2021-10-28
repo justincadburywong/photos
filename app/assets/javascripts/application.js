@@ -7,9 +7,10 @@
 //= require jquery.min
 //= require jquery.easing.1.3
 //= require bootstrap.min
-//= require jquery.waypoints.min
 //= require owl.carousel.min
 //= require jquery.stellar.min
+//= require jquery.waypoints.min
+//= require jquery.countTo
 //= require main
 
 window.addEventListener("load", () => {

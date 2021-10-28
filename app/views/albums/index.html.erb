@@ -1,46 +1,32 @@
-<p id="notice"><%= notice %></p>
-
-<div class="heading-section text-center">
-  <h2>Albums</h2>
-  <%= link_to 'New Album', new_album_path %>
-</div>
-<div class="row about">
-  <div class="col-md-10 col-md-offset-1">
+<div id="fh5co-main">
+  <p id="notice"><%= notice %></p>
+  <div class="fh5co-narrow-content  animate-box fh5co-border-bottom" data-animate-effect="fadeInLeft">
+    <div class="row">
     <% @albums.in_groups_of(2, false).each do |album1, album2| %>
 
-        <div class="col-md-6 col-sm-6">
-          <a href="<%= album_path(album1) %>">
-            <div class="team-section-grid" style="background-image: url(images/author-6.jpg);">
-              <div class="overlay-section">
-                <div class="desc">
-                  <h2><%= album1.title %></h2>
-                </div>
-              </div>
-            </div>
-          </a>
-          <div class="text-center">
-            <span><%= link_to 'Edit', edit_album_path(album1) %></span>
-            <span><%= link_to 'Destroy', album1, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-          </div>
-        </div>
+      <% if album1 %>
+      <div class="col-md-4 fh5co-staff">
+        <a href="<%= album_path(album1) %>">
+          <i><%= image_tag album1.photos.first.variant(resize_to_limit: [200, 200]), class: "img-fluid" %></i>
+          <h2><%= album1.title %></h2>
+        </a>
+        <span><%= link_to 'Edit', edit_album_path(album1) %></span>
+        <span><%= link_to 'Destroy', album1, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+      </div>
+      <% end %>
 
-        <div class="col-md-6 col-sm-6">
-          <a href="<%= album_path(album2) %>">
-            <div class="team-section-grid" style="background-image: url(images/author-6.jpg);">
-              <div class="overlay-section">
-                <div class="desc">
-                  <h2><%= album2.title %></h2>
-                </div>
-              </div>
-            </div>
-          </a>
-          <div class="text-center">
-            <span><%= link_to 'Edit', edit_album_path(album1) %></span>
-            <span><%= link_to 'Destroy', album1, method: :delete, data: { confirm: 'Are you sure?' } %></span>
-          </div>
-        </div>
+      <% if album2 %>
+      <div class="col-md-4 fh5co-staff">
+        <a href="<%= album_path(album2) %>">
+          <i><%= image_tag album2.photos.first.variant(resize_to_limit: [200, 200]), class: "img-fluid" %></i>
+          <h2><%= album2.title %></h2>
+        </a>
+        <span><%= link_to 'Edit', edit_album_path(album2) %></span>
+        <span><%= link_to 'Destroy', album2, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+      </div>
+      <% end %>
 
     <% end %>
-
   </div>
+
 </div>
