@@ -15,6 +15,7 @@ class AlbumsTest < ApplicationSystemTestCase
     click_on "New Album"
 
     fill_in "Title", with: @album.title
+    fill_in "User", with: @album.user_id
     click_on "Create Album"
 
     assert_text "Album was successfully created"
@@ -26,6 +27,7 @@ class AlbumsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Title", with: @album.title
+    fill_in "User", with: @album.user_id
     click_on "Update Album"
 
     assert_text "Album was successfully updated"
