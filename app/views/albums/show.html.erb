@@ -1,21 +1,15 @@
-<p id="notice"><%= notice %></p>
+<div id="fh5co-main">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @album.title %>
-</p>
+  <div class="fh5co-gallery">
+    <% @album.photos.each do |photo| %>
+      <a class="gallery-item" href="<%= url_for(photo) %>">
+        <%= image_tag photo %>
+      </a>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Photos:</strong>
-  <% @album.photos.each do |photo| %>
-    <div><%= link_to photo.filename, photo %></div>
-  <% end %>
-</p>
+  <%= link_to 'Edit', edit_album_path(@album) %> |
+  <%= link_to 'Back', albums_path %>
 
-<p>
-  <strong>User:</strong>
-  <%= @album.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
+</div>
