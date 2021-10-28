@@ -3,7 +3,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums or /albums.json
   def index
-    @albums = Album.all
+    @albums = Album.where(user_id: current_user.id).with_attached_photos
   end
 
   # GET /albums/1 or /albums/1.json
@@ -22,6 +22,7 @@ class AlbumsController < ApplicationController
   # POST /albums or /albums.json
   def create
     @album = Album.new(album_params)
+    @album.user_id = current_user.id
 
     respond_to do |format|
       if @album.save
@@ -64,6 +65,6 @@ class AlbumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:title, :user_id, photos: [])
+      params.require(:album).permit(:title, photos: [])
     end
 end
