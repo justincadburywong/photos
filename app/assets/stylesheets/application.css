@@ -12,4 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= require css/animate
+ *= require css/icomoon
+ *= require css/bootstrap
+ *= require css/owl.carousel.min
+ *= require css/owl.theme.default.min
+ *= require css/style
  */
