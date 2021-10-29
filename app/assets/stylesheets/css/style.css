@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src:font-url("icomoon.eot?srf3rx");
-  src:font-url("icomoon.eot?srf3rx#iefix") format("embedded-opentype"), font-url("icomoon.ttf?srf3rx") format("truetype"), font-url("icomoon.woff?srf3rx") format("woff"), font-url("icomoon.svg?srf3rx#icomoon") format("svg");
+  src: url("/assets/icomoon/icomoon.eot?srf3rx");
+  src: url("/assets/icomoon/icomoon.eot?srf3rx#iefix") format("embedded-opentype"), src: url("/assets/icomoon/icomoon.ttf?srf3rx") format("truetype"), src: url("/assets/icomoon/icomoon.woff?srf3rx") format("woff"), src: url("/assets/icomoon/icomoon.svg?srf3rx#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -208,6 +208,9 @@ figure figcaption {
   width: 100%;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.6);
+}
+#fh5co-aside .fh5co-footer i {
+  font-size: 1.5em;
 }
 @media screen and (max-width: 768px) {
   #fh5co-aside .fh5co-footer {
