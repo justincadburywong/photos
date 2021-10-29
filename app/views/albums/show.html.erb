@@ -4,7 +4,7 @@
   <div class="fh5co-gallery popup-gallery ">
     <% @album.photos.each do |photo| %>
       <a class="gallery-item" href="<%= url_for(photo) %>">
-        <%= image_tag photo %>
+        <%= image_tag photo.variant(resize_to_fill: [300, 450]) %>
       </a>
     <% end %>
   </div>
