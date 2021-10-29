@@ -15,28 +15,66 @@
 //= require jquery.lazyload
 //= require main
 
-window.addEventListener("load", () => {
+$(document).on('turbolinks:load', function(){
   eventListeners();
 });
 
 function eventListeners(){
   // $("img").lazyload();
-
-	$('.popup-gallery').magnificPopup({
-		delegate: 'a',
-		type: 'image',
-		tLoading: 'Loading image #%curr%...',
-		mainClass: 'mfp-img-mobile',
-		gallery: {
-			enabled: true,
-			navigateByImgClick: true,
-			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-		},
-		image: {
-			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-			titleSrc: function(item) {
-				return;
-			}
-		}
-	});
+  editAllTags();
+  deleteImage();
+  magnificPopup();
 }
+
+// magnific popup feature
+function magnificPopup(){
+  $('.popup-gallery').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    tLoading: 'Loading image #%curr%...',
+    mainClass: 'mfp-img-mobile',
+    gallery: {
+      enabled: true,
+      navigateByImgClick: true,
+      preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+    },
+    image: {
+      tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+      titleSrc: function(item) {
+        return;
+      }
+    }
+  });
+}
+
+// toggle all edit tag forms
+function editAllTags(){
+  var counter = 0
+  $('#edit').on('click', function(e){
+    e.preventDefault();
+    if(counter == 0){
+      $('.tags').show();
+      $('.del').show()
+      counter = 1
+    }else{
+      $('.tags').hide();
+      $('.del').hide();
+      counter = 0
+    };
+  })
+}
+
+
+function deleteImage(){
+  $('.del').on('click', function(e){
+    e.preventDefault();
+    var postUrl = "/albums/" + $(this).parent().attr('id').match(/\d+/)
+    $.ajax({
+      url: postUrl,
+      method: 'DELETE'
+    }).done(function(data){
+      // delete image div
+      $(e.target).parent().remove();
+    })
+  })
+};
