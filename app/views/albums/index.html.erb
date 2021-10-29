@@ -10,8 +10,8 @@
           <i><%= image_tag album1.photos.first.variant(resize_to_limit: [200, 200]), class: "img-fluid" %></i>
           <h2><%= album1.title %></h2>
         </a>
-        <span><%= link_to 'Edit', edit_album_path(album1) %></span>
-        <span><%= link_to 'Destroy', album1, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        <span class="tags" style="display:none;"><%= link_to 'Edit', edit_album_path(album1) %></span>
+        <span class="tags" style="display:none;"><%= link_to 'Destroy', album1, method: :delete, data: { confirm: 'Are you sure?' } %></span>
       </div>
       <% end %>
 
@@ -21,8 +21,8 @@
           <i><%= image_tag album2.photos.first.variant(resize_to_limit: [200, 200]), class: "img-fluid" %></i>
           <h2><%= album2.title %></h2>
         </a>
-        <span><%= link_to 'Edit', edit_album_path(album2) %></span>
-        <span><%= link_to 'Destroy', album2, method: :delete, data: { confirm: 'Are you sure?' } %></span>
+        <span class="tags" style="display:none;"><%= link_to 'Edit', edit_album_path(album2) %></span>
+        <span class="tags" style="display:none;"><%= link_to 'Destroy', album2, method: :delete, data: { confirm: 'Are you sure?' } %></span>
       </div>
       <% end %>
 
