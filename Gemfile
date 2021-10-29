@@ -40,6 +40,7 @@ gem 'dotenv-rails'
 gem 'rails_12factor'
 gem 'friendly_id', '~> 5.4.0'
 gem 'metamagic'
+gem "lazyload-rails"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false

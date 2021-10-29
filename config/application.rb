@@ -11,6 +11,8 @@ module Photos
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.active_storage.replace_on_assign_to_many = false
+    config.active_storage.resolve_model_to_route = :rails_storage_proxy
+    # config.action_view.image_loading = "lazy"
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

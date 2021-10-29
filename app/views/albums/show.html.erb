@@ -1,7 +1,7 @@
 <div id="fh5co-main">
   <p id="notice"><%= notice %></p>
 
-  <div class="fh5co-gallery">
+  <div class="fh5co-gallery popup-gallery ">
     <% @album.photos.each do |photo| %>
       <a class="gallery-item" href="<%= url_for(photo) %>">
         <%= image_tag photo %>

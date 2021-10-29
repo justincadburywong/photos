@@ -8,9 +8,11 @@
 //= require jquery.easing.1.3
 //= require bootstrap.min
 //= require owl.carousel.min
+//= require jquery.magnific-popup.min
 //= require jquery.stellar.min
 //= require jquery.waypoints.min
 //= require jquery.countTo
+//= require jquery.lazyload
 //= require main
 
 window.addEventListener("load", () => {
@@ -18,55 +20,23 @@ window.addEventListener("load", () => {
 });
 
 function eventListeners(){
-  // upLike();
-  // downLike();
-  submit_categories();
-}
+  // $("img").lazyload();
 
-// upLike a message
-function upLike(){
- $('.uplike').on('submit', function(e){
-  console.log("prevented uplike")
-   e.preventDefault();
-   var value, postUrl, data;
-   value = 1;
-   postUrl = $(this).attr('action');
-   data = $(this).serialize();
-   $.ajax({
-     url: postUrl,
-     method: 'PUT',
-     data: data
-   }).done(function(data) {
-     $('.uplike').empty();
-     $('.uplike').prepend(data);
-   });
- })
-};
-
-// downLike a message
-function downLike(){
- $('.downlike').on('submit', function(e){
-   console.log("prevented downlike")
-   e.preventDefault();
-   $(this).siblings('.del').toggle();
-   var tags, postUrl, data;
-   tags = $(this);
-   postUrl = $(this).attr('action');
-   data = $(this).children(':first').serialize();
-   $.ajax({
-     url: postUrl,
-     method: 'PUT',
-     data: data
-   }).done(function(data) {
-     tags.toggle();
-     $('.tag-value').empty();
-     $('.tag-value').prepend(data);
-   });
- })
-};
-
-function submit_categories(){
-  $('select').change(function(){
-    $('#category').submit();
-  });
+	$('.popup-gallery').magnificPopup({
+		delegate: 'a',
+		type: 'image',
+		tLoading: 'Loading image #%curr%...',
+		mainClass: 'mfp-img-mobile',
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+		},
+		image: {
+			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+			titleSrc: function(item) {
+				return;
+			}
+		}
+	});
 }
