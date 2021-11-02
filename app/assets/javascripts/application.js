@@ -24,6 +24,7 @@ function eventListeners(){
   editAllTags();
   deleteImage();
   magnificPopup();
+  setInterval();
 }
 
 // magnific popup feature
@@ -46,6 +47,10 @@ function magnificPopup(){
     }
   });
 }
+
+setInterval(function() {
+  $.magnificPopup.instance.next();
+}, 6000);
 
 // toggle all edit tag forms
 function editAllTags(){
