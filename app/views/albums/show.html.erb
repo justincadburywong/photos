@@ -9,7 +9,7 @@
   <div class="fh5co-gallery popup-gallery ">
     <% @album.photos.each do |photo| %>
       <a class="gallery-item" href="<%= url_for(photo) %>">
-        <%= image_tag photo.variant(resize_to_fill: [300, 450]) %>
+        <%= image_tag photo.variant(resize_to_fill: [300, 450]) loading="lazy" %>
         <i class="icon-trash del" style="display:none;font-size: 1.5em; text-align:center;"></i>
       </a>
     <% end %>
